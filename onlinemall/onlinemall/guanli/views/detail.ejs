@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title%></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+     <script type="text/javascript" src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+       </head>
+  <body>
+    
+  		<%- include("./head.ejs",{title:"有机农产品详情页面",isshow:false})%>
+
+  		<div class="container">
+  			 <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">农产品名称：<%= info.proname%></h3>
+           </div>
+           <div class="panel-heading">
+              价格：<%= info.price%>
+           </div>
+            <div class="panel-heading">
+              数量：<%= info.num%>
+           </div>
+           <div class="panel-body">
+             <pre>详情：<%= info.detail%></pre>
+             <img src="<%- info.pathname%>" style="width:200px;height:200px;"/>
+           </div>
+         </div>
+
+  		</div>
+  </body>
+</html>

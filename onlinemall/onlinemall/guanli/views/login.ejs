@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title%></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+    	html,body{
+    		width:100%;
+    		height:100%;
+    		background:rgb(153,204,51);
+    	}
+    	.container form{
+    		margin-top:40px;
+    		background:#fff;
+    		width:420px;
+    		height:260px;
+    		padding:20px;
+    	   border-radius:10px;
+       	}
+    </style>
+  </head>
+  <body>
+  	  <%- include("./head.ejs",{title:"有机农产品商家登录页面",isshow:false})%>
+  	  <div class="container">
+	<form action="/login" method="post">
+	 <div class="form-group group">
+	    <label>username：</label>
+	    <input type="text" class="form-control" name="username"  placeholder="请输入用户名" id="username">
+ 	   </div>
+  <div class="form-group group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" placeholder="请输入密码">
+  </div>
+ 
+ <div class="form-group group" style="clear:both;">
+   <button type="submit" class="btn btn-default" style="float:left;">登录</button>
+  <button type="button" class="btn btn-default" style="float:right;"><a href="/register">注册</a></button>
+  </div>
+  
+  <%if(isexp){%>
+  <div class="form-group" style="clear:both;">
+    <span style="color:red;">您的用户名密码不匹配</span>
+  </div>
+  <%}%>
+
+</form>
+</div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+    	html,body{
+    		width:100%;
+    		height:100%;
+    		background:rgb(153,204,51);
+    	}		
+    	.form-group.group{
+    		width:300px;
+    	}
+    	.container .form-p{
+    		margin-top:20px;
+    		 background:#fff;
+    		 height:457px;
+    		 width:800px;
+    		 padding:40px 0 20px 40px;
+    		 border-radius:10px;
+    	}
+    	.container .form-p #btn{clear:both;display:block;}
+    	.container form{
+    		padding:20px;
+    	   border-radius:10px;
+       	}
+       	.container .form-p .samegroup{clear:both;}
+       	.container .form-p .samegroup .group{float:left;}
+       	.container .form-p .samegroup i{
+       		float:left;
+       		dsiplay:inline-block;
+       		padding:3px 6px;
+       		font-style: normal;
+       		margin:27px 0 0 16px;
+       	}
+    </style>
+  </head>
+  <body>
+
+  <%- include("./head.ejs",{title:"有机农产品商家后台注册页面",isshow:false})%>
+ <div class="container">
+ <div class="form-p">
+ 	 <div class="samegroup">
+ 		<div class="form-group group">
+	    <label>username：</label>
+	    <input type="text" class="form-control" name="username"  placeholder="请输入用户名" id="username">
+ 	   </div>
+    <i class="usna"></i>
+ 	</div>
+ 	<div class="samegroup">
+ 		<div class="form-group group">
+    <label>tel</label>
+    <input type="text" class="form-control" name="tel"  placeholder="请输入手机号" id="tel">
+  </div>
+    <i class="cn"></i>
+ 	</div>
+   <div class="samegroup">
+ 	<div class="form-group group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" placeholder="请输入密码" id="password">
+     </div>
+    <i class="pw"></i>
+ 	</div>
+  <div class="samegroup">
+ 	<div class="form-group group">
+    <label>repassword</label>
+    <input type="password" class="form-control" placeholder="请再次输入密码" id="repassword">
+  </div>
+    <i class="su"></i>
+ 	</div>
+  <button type="submit" class="btn btn-default" id="btn">注册</button>
+ </div>
+</div>
+ 
+<script src="/javascripts/register.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

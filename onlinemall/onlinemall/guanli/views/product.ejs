@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+      .container form{
+        width:600px;
+      }
+    </style>
+  </head>
+  <body>
+   <%- include("./head.ejs",{title:title,isshow:false})%>
+
+      <div class="container">
+
+       <%if(isNew){%>
+        <form method="post" action="/product" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="exampleInputEmail1">产品名称:</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="proname" placeholder="产品名称">
+          </div>
+          <div class="form-group">
+            <label>产品类型:</label>
+            <input type="text" class="form-control"  name="kindtype" placeholder="产品类型">
+          </div>
+          <div class="form-group">
+            <label>价格:</label>
+            <input type="text" class="form-control" name="price" placeholder="价格">
+          </div>
+           <div class="form-group">
+            <label>数量:</label>
+            <input type="text" class="form-control" name="num" placeholder="数量">
+          </div>
+          <div class="form-group">
+            <label>日期:</label>
+            <input type="text" class="form-control" name="date" placeholder="日期">
+          </div>
+          <div class="form-group">
+            <label>详情:</label>
+            <textarea class="form-control" rows="5" name="detail"></textarea>
+          </div>
+           <div class="form-group">
+            <label>上传图片:</label>
+           <input type="file" name="picfile"/>
+          </div>         
+          <button type="submit" class="btn btn-default">上架产品</button>
+        </form>
+
+        <%} else {%> 
+        <form method="post" action="/product/fixed" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>产品名称:</label>
+            <input type="text" class="form-control"name="proname" value="<%= info.proname%>">
+          </div>
+          <div class="form-group">
+            <label>产品类型:</label>
+            <input type="text" class="form-control" name="kindtype" value="<%= info.kindtype%>">
+          </div>
+          <div class="form-group">
+            <label>价格:</label>
+            <input type="text" class="form-control" name="price" value="<%= info.price%>">
+          </div>
+           <div class="form-group">
+            <label>数量:</label>
+            <input type="text" class="form-control" name="num" value="<%= info.num%>">
+          </div>
+          <div class="form-group">
+            <label>日期:</label>
+            <input type="text" class="form-control" name="date" value="<%= info.date%>">
+          </div>
+          <div class="form-group">
+            <label>详情:</label>
+            <textarea class="form-control" rows="5" name="detail"><%= info.detail%></textarea>
+          </div>
+           <div class="form-group">
+            <label>上传图片</label>
+           <input type="file" name="picfile"/>
+          </div>   
+           <input type="hidden" name="id" value="<%= info._id%>"/>     
+          <button type="submit" class="btn btn-default">更新产品</button>
+        </form>
+        <%}%>
+      </div>
+  </body>
+</html>
+
+
+
+

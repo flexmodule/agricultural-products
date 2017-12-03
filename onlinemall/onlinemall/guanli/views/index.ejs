@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+   <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+     <script src="/javascripts/index.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+    html,body{
+        height:100%;
+    }
+    .prokinds{
+        background:#f8f8f8;
+        position:fixed;
+        height:100%;
+        left:0;
+        width:98px;
+        }
+        .prokinds ul{
+            list-style: none;
+            margin:0;
+            padding:0;
+            text-align:center;
+            font:14px/50px "";
+        }
+        .prokinds ul li{
+            text-decoration: underline;
+        }
+        .prokinds h3{
+            margin-top:100px;
+            text-align:center;
+            font:16px/30px "";
+        }
+        .prokinds h4{
+            text-align:center;
+            font:14px/30px "";
+        }
+        .prokinds h4 a{
+            color:red;
+        }
+        .arrow{
+            position:absolute;
+            right:-6px;
+            top:260px;
+            z-index:3;
+            width:8px;
+            height:200px;
+            color:#fff;
+            border-top-right-radius:5px;
+            border-bottom-right-radius:5px;
+            background:green;
+            text-align:center;
+            font:8px/200px "";
+        }
+        .pagenav .pagination .red{
+            color:red;
+        }
+    </style>
+  </head>
+  <body>
+  <div class="prokinds">
+        <h3>农产品种类</h3>
+        <h4><a href="/">全部产品</a></h4>
+        <ul>
+            <li><a href="javascript:;">水果</a></li>
+            <li><a href="javascript:;">蔬菜</a></li>
+            <li><a href="javascript:;">畜牧水产</a></li>
+            <li><a href="javascript:;">粮油米面</a></li>
+            <li><a href="javascript:;">农副加工</a></li>
+            <li><a href="javascript:;">苗木花草</a></li>
+        </ul>
+        <div class="arrow">
+        <span> < </span>
+        </div>
+    </div>
+    
+    <%- include("./head.ejs",{title:"有机农产品商家产品页面",isshow:true,headername:name})%>
+    
+    <div class="container">
+    	<table class="table table-bordered table-striped">
+    	      <thead>
+    	        <tr>
+    	          <th>商家</th>
+    	          <th>产品名称</th>
+                  <th>产品类型</th>
+    	          <th>价格</th>
+                  <th>数量</th>
+                  <th>日期</th>
+    	          <th>操作</th>
+    	        </tr>
+    	      </thead>
+    	      <tbody id="mainbody">
+    	        	
+    	      </tbody>
+    	    </table>
+    </div>
+
+    <nav aria-label="Page navigation" class="pagenav" style="text-align:center">
+          <ul class="pagination">
+          </ul>      
+    </nav>
+     
+    
+    <script type="text/javascript" charset="utf-8">
+     if((($(document).width()-$(".container").width()-30)/2)<98){
+             $(".prokinds").css({
+                left:-98
+             })
+        }else{
+             $(".prokinds").css({
+                left:0
+             })
+        }
+
+     $(".arrow").on("click",function(){
+        if($(".arrow").text()==">"){
+          $(".prokinds").animate({
+              left:0
+          },function(){
+            $(".arrow").text("<");
+          })  
+        }else{
+           $(".prokinds").animate({
+               left:-98
+           },function(){
+            $(".arrow").text(">");
+           }) 
+        }    
+        })
+      $(window).on("resize",function(){
+        if((($(document).width()-$(".container").width()-30)/2)<98){
+             $(".prokinds").css({
+                left:-98
+             })
+        }else{
+             $(".prokinds").css({
+                left:0
+             })
+        }
+      });
+      function sameajax(key,attr,type,url){
+        $("#mainbody").empty();
+        $(".pagination").empty();
+        $.ajax({
+            url:url,
+            data:{
+                limit:8,offset:0,key:key,type:type
+            },
+            success:(result)=>{
+                renderlist(result.info);
+                renderpage(result.total,key,attr,type);
+            }
+        });
+        function renderlist(list){
+                for(var i=0;i<list.length;i++){
+                $tr = $("<tr>").html(`
+                <td>${list[i].author}</td>
+                <td><a href="/detail?id=${list[i]._id}">${list[i].proname}</a></td>
+                <td>${list[i].kindtype}</td>
+                <td>${list[i].price}</td>
+                <td>${list[i].num}</td>
+                <td>${list[i].date}</td>
+                <td>
+                <a class="btn btn-default" href="/product/fixed?id=${list[i]._id}" role="button">修改</a>
+                <a class="btn btn-danger" href="/product/delete?id=${list[i]._id}" role="button">删除</a>
+                </td>
+                    `);
+
+                $("#mainbody").append($tr);
+            }
+        };
+        function renderpage(page,key,attr,type){
+            for(var i=0;i<page;i+=8){
+                $li = $("<li class="+attr+">").html(`<a>${i/8+1}</a>`);
+                if($li.attr("class")==attr){
+                    $li.click(function(){
+                    $(this).find("a").addClass("red").parents("li").siblings("li").find("a").removeClass("red");
+                    rerenderlist($(this).index(),key,type);
+                })
+                }
+                
+                $(".pagination").append($li);
+            }
+
+        };
+        function rerenderlist(index,key,type){
+            $("#mainbody").empty();
+            $.ajax({
+                url:"/relist",
+                data:{limit:8,offset:index*8,key:key,type:type},
+                success:(result)=>{
+                 console.log(result) // 箭头函数解决this 指向
+                renderlist(result.info);
+                }
+            })
+        }
+      }
+      $(".prokinds").find("ul").find("li").on("click",function(){
+                var $text=$(this).text();
+                sameajax($text,"kindpage","kindtype","/relist")
+                
+      });
+        
+        $(".dropdown").find(".dropdown-menu").find("li").on("click",function(){
+                    $(".selected").text($(this).text());
+        })
+
+
+        $(".searchbtn").on("click",function(){
+            if($(".selected").text()=="产品名称"){
+                sameajax($(".form-control").val(),"productname","proname","/relist")
+            }else if($(".selected").text()=="日期"){
+                sameajax($(".form-control").val(),"productdate","date","/relist")
+            }
+        })
+    </script>
+  </body>
+</html>
+
+
+
+              
+                            
+  
