@@ -8,21 +8,21 @@
 然后运行服务器环境，npm start
 --------------------------------------------------------------------
 一、首页效果</br>
-![](https://github.com/flexmodule/agricultural-products/tree/master/show/index.png)
+![](https://github.com/flexmodule/agricultural-products/blob/master/show/index.png)
 ---------------------------------
 二、登录效果</br>
-![](https://github.com/flexmodule/agricultural-products/tree/master/show/login.png)
+![](https://github.com/flexmodule/agricultural-products/blob/master/show/login.png)
 ---------------------------------
 三、注册效果</br>
-![](https://github.com/flexmodule/agricultural-products/tree/master/show/register.png)
+![](https://github.com/flexmodule/agricultural-products/blob/master/show/register.png)
 ---------------------------------
 四、上架产品页面效果</br>
-![](https://github.com/flexmodule/agricultural-products/tree/master/show/product.png)
+![](https://github.com/flexmodule/agricultural-products/blob/master/show/product.png)
 ---------------------------------
 五、更新产品信息页面效果</br>
-![](https://github.com/flexmodule/agricultural-products/tree/master/show/fixed.png)
+![](https://github.com/flexmodule/agricultural-products/blob/master/show/fixed.png)
 ---------------------------------
 六、产品详情页效果</br>
-![](https://github.com/flexmodule/agricultural-products/tree/master/show/detail.png)
+![](https://github.com/flexmodule/agricultural-products/blob/master/show/detail.png)
 ---------------------------------
 
