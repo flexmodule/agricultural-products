@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/mallpublic.css' />
+		<link rel='stylesheet' href='/stylesheets/mallhead.css' />
+    <link rel='stylesheet' href='/stylesheets/mallstyle.css' />
+    <link rel="stylesheet" href="/bootstrap/css/swiper.min.css">
+    
+  </head>
+  <body>
+    <%- include("./mallhead.ejs",{isshow:isShow,headername:name})%>
+    <div class="banner">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="/images/banner1.png" alt=""></div>
+          <div class="swiper-slide"><img src="/images/banner2.png" alt=""></div>
+          <div class="swiper-slide"><img src="/images/banner3.png" alt=""></div>
+          <div class="swiper-slide"><img src="/images/banner4.png" alt=""></div>
+          <div class="swiper-slide"><img src="/images/banner5.png" alt=""></div>
+          <div class="swiper-slide"><img src="/images/banner6.png" alt=""></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="margin">
+        <h3>新闻资讯</h3>
+        <div class="main-child clear">
+          <dl>
+            <dt>资讯1</dt>
+            <dd>投资约70亿元 中国有机农产品电商产业小镇项落户嘉陵</dd>
+            <dd>洪雅县三宝镇召开绿色有机农产品产业发展座谈会</dd>
+          </dl>
+          <dl>
+            <dt>资讯2</dt>
+            <dd>投资约70亿元 中国有机农产品电商产业小镇项落户嘉陵</dd>
+            <dd>洪雅县三宝镇召开绿色有机农产品产业发展座谈会</dd>
+          </dl>
+          <dl>
+            <dt>资讯3</dt>
+            <dd>投资约70亿元 中国有机农产品电商产业小镇项落户嘉陵</dd>
+            <dd>洪雅县三宝镇召开绿色有机农产品产业发展座谈会</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div id="shop-service" class="margin">
+			<div class="shop-service-t">
+				<div class="shop-service-tl same-shop-ser">
+					<a href="#">
+						<i class="same-i"></i>
+						品质
+					</a>
+					<a href="#" class="same-a">正品行货 购货无忧</a>
+				</div>
+				<div class="shop-service-tc same-shop-ser">
+					<a href="#">
+						<i class="same-i"></i>
+						低价
+					</a>
+					<a href="#" class="same-a">普惠实价 帮你省钱</a>
+				</div>
+				<div class="shop-service-tr same-shop-ser">
+					<a href="#">
+						<i class="same-i"></i>
+						配送
+					</a>
+					<a href="#" class="same-a">专业配送 按时按需</a>
+				</div>
+			</div>
+			<div class="shop-service-b">
+				<ul>
+					<li>物流配送</li>
+					<li><a href="#">配送查询</a></li>
+					<li><a href="#">配送服务</a></li>
+					<li><a href="#">配送费用</a></li>
+					<li><a href="#">配送时效</a></li>
+					<li><a href="#">签收与验货</a></li>
+				</ul>
+				<ul>
+					<li>支付与账户</li>
+					<li><a href="#">货到付款</a></li>
+					<li><a href="#">在线支付</a></li>
+					<li><a href="#">分期付款</a></li>
+					<li><a href="#">门店支付</a></li>
+					<li><a href="#">账户安全</a></li>
+				</ul>
+				<ul>
+					<li>售后服务</li>
+					<li><a href="#">退换货服务</a></li>
+					<li><a href="#">退款说明</a></li>
+				</ul>
+				<ul>
+					<li>会员专区</li>
+					<li><a href="#">会员介绍</a></li>
+					<li><a href="#">优惠券说明</a></li>
+					<li><a href="#">美豆说明</a></li>
+					<li><a href="#">商品评价</a></li>
+				</ul>
+				<ul>
+					<li>购物帮助</li>
+					<li><a href="#">购物保障</a></li>
+					<li><a href="#">购物流程</a></li>
+					<li><a href="#">促销优惠</a></li>
+					<li><a href="#">焦点问题</a></li>
+					<li><a href="#">联系我们</a></li>
+				</ul>
+			</div>
+	    </div>
+		
+		<div id="footer">
+			<div class="margin">
+				<div class="footer-t">
+					<span>
+						<i></i>
+						<b>
+						<p>门店服务</p>
+						<a href="#">**门店全国共计2000余家</a>
+						</b>
+					</span>
+					<span>
+						<i></i>
+						<b>
+						<p>用户体验</p>
+						<a href="#">参与用户体验改进计划 用户反馈</a>
+						</b>
+					</span>
+					<div class="customer">
+						<em>
+							<i></i>
+							<p>公众号</p>
+						</em>
+						<em>
+							<i></i>
+							<p>手机站点</p>
+						</em>
+						<em>
+							<p>扫描下载客户端</p>
+						</em>
+					</div>
+				</div>
+				<div class="footer-c">
+					<p>
+						<a href="#">**集团</a>
+						<a href="#">**管家</a>
+						<a href="#">关于**</a>
+						<a href="#">加入我们</a>|
+						<a href="#">品牌大全</a>
+						<a href="#">商品专题</a>
+						<a href="#">批发大全</a>
+						<a href="#">热词搜索</a>
+						<a href="#">友情链接</a>
+						<a href="#">风险监测</a>|
+						<a href="#">销售联盟</a>
+						<a href="#">商家入驻</a>
+					</p>
+					<p>违法和不良信息举报电话：021-60766055  </p>
+					<p>有机农产品电子商务有限公司  办公地址:上海市嘉定区沪宜公路3163-3199号一楼A区  客服电话:4008708708</p>
+					<p>©2000-2017  有机农产品商务有限公司版权所有  京公安网备11010502027062  沪ICP备11009419号  沪B2-20120004号</p>
+				</div>
+				<div class="footer-b">
+					    <a href="#"><i></i><span>经营性网站备案信息</span></a>
+						<a href="#"><i></i><span>可信网站信用评价</span></a>
+						<a href="#"><i></i><span>诚信网站</span></a>
+						<a href="#"><i></i><span>朝阳网路警察</span></a>
+						<a href="#"><i></i><span>网购大家评</span></a>
+						<a href="#"><i></i><span>上海市互联网违法和不良信息举报中心</span></a>
+				</div>
+				
+			</div>
+		</div>
+
+    </div>
+		
+		<script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+		<!-- <script src="/javascripts/mallindex.js"></script> -->
+    <script src="/bootstrap/js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+            delay: 1500,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+				});
+				
+
+
+				function sameajax(key,attr,type,url){
+        // $("#mainbody").empty();
+        // $(".pagination").empty();
+        $.ajax({
+            url:url,
+            data:{
+                limit:12,offset:0,key:key,type:type
+            },
+            success:(result)=>{
+							console.log(result)
+                renderlist(result.info);
+                renderpage(result.total,key,attr,type);
+            }
+        });
+        // function renderlist(list){
+        //         for(var i=0;i<list.length;i++){
+        //         $tr = $("<tr>").html(`
+        //         <td>${list[i].author}</td>
+        //         <td><a href="/detail?id=${list[i]._id}">${list[i].proname}</a></td>
+        //         <td>${list[i].kindtype}</td>
+        //         <td>${list[i].price}</td>
+        //         <td>${list[i].num}</td>
+        //         <td>${list[i].date}</td>
+        //         <td>
+        //         <a class="btn btn-default" href="/product/fixed?id=${list[i]._id}" role="button">修改</a>
+        //         <a class="btn btn-danger" href="/product/delete?id=${list[i]._id}" role="button">删除</a>
+        //         </td>
+        //             `);
+
+        //         $("#mainbody").append($tr);
+        //     }
+        // };
+        // function renderpage(page,key,attr,type){
+        //     for(var i=0;i<page;i+=8){
+        //         $li = $("<li class="+attr+">").html(`<a>${i/8+1}</a>`);
+        //         if($li.attr("class")==attr){
+        //             $li.click(function(){
+        //             $(this).find("a").addClass("red").parents("li").siblings("li").find("a").removeClass("red");
+        //             rerenderlist($(this).index(),key,type);
+        //         })
+        //         }
+                
+        //         $(".pagination").append($li);
+        //     }
+
+        // };
+        // function rerenderlist(index,key,type){
+        //     $("#mainbody").empty();
+        //     $.ajax({
+        //         url:"/relist",
+        //         data:{limit:8,offset:index*8,key:key,type:type},
+        //         success:(result)=>{
+        //          console.log(result) // 箭头函数解决this 指向
+        //         renderlist(result.info);
+        //         }
+        //     })
+        // }
+      }
+      $(".nav").find("ul").find("li").find("a").on("click",function(){
+                var $text=$(this).text();
+                sameajax($text,"kindpage","kindtype","/mallsellerlist")                
+      });
+         
+        $(".dropdown").find(".dropdown-menu").find("li").on("click",function(){
+                    $(".selected").text($(this).text());
+        });
+
+        $(".searchbtn").on("click",function(){
+            if($(".selected").text()=="产品名称"){
+                sameajax($(".form-control").val(),"productname","proname","/relist")
+            }else if($(".selected").text()=="日期"){
+                sameajax($(".form-control").val(),"productdate","date","/relist")
+            }
+        })
+      </script>
+  </body>
+</html>

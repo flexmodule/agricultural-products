@@ -1,0 +1,71 @@
+@charset "UTF-8";
+/* CSS Document */
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select, td, figure {
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑"; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none; 
+  color: #000;
+}
+
+input:focus {
+  outline: none; }
+
+.over {
+  white-space: nowrap;
+  text-overflow: ecllipsis;
+  overflow: hidden; }
+
+.valign:after {
+  content: "";
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle; }
+
+.clear {
+  clear: both; }
+
+.valign img {
+  vertical-align: middle; }
+
+a img {
+  boreder: 0; }
+
+mark {
+  background: none; }
+
+/*万能清除法*/
+.clear {
+  zoom: 1; }
+
+/*清除ie的浮动*/
+.clear:before {
+  content: "";
+  display: table; }
+
+.clear:after {
+  content: "";
+  clear: both;
+  display: block; }
+
+i {
+  display: inline-block;
+  vertical-align: middle; }
+
+.margin {
+  width: 1200px;
+  margin: 0 auto; }
+
+html {
+  height: 100%; }
+  html body {
+    height: 100%; }
+body {
+  min-width: 1200px;    
+}

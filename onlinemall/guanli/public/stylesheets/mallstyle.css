@@ -1,0 +1,166 @@
+
+.banner .swiper-container {
+  height: 400px;
+}
+.banner .swiper-container .swiper-slide img{
+  width: 100%;
+  height: 100%;
+}
+.main h3 {
+  font: 20px/40px "";
+  font-weight: 700;
+  border-bottom: 2px solid #eeeeee;
+}
+.main .main-child dl {
+  float: left;
+  padding: 10px;
+  width: 300px;
+  margin-right: 50px;
+}
+.main .main-child dl dt {
+  font: 18px/24px "";
+  color: #333;
+}
+.main .main-child dl dd {
+  padding: 5px 0;
+  font: 14px/18px "";
+  color: #666;
+}
+.main .main-child dl dt:hover {
+  color: red;
+}
+.main .main-child dl dd:hover {
+  color: red;
+}
+
+
+
+#shop-service {
+padding: 30px 0 14px 0; }
+#shop-service .shop-service-t {
+padding: 16px 62px;
+display: flex;
+justify-content: space-between;
+background: #f5f5f5;
+font: 700 18px ""; }
+#shop-service .shop-service-t a {
+color: #404040;
+margin-right: 10px; }
+#shop-service .shop-service-t .same-i {
+display: inline-block;
+vertical-align: middle;
+width: 40px;
+height: 42px; }
+#shop-service .shop-service-t .same-a {
+font-weight: 400; }
+#shop-service .shop-service-t .shop-service-tl i {
+background: url(../images/ui.png) 0 -1469px no-repeat; }
+#shop-service .shop-service-t .shop-service-tc i {
+background: url(../images/ui.png) -40px -1469px no-repeat; }
+#shop-service .shop-service-t .shop-service-tr i {
+background: url(../images/ui.png) -80px -1469px no-repeat; }
+#shop-service .shop-service-b {
+padding: 15px 64px 0;
+display: flex;
+justify-content: space-between; }
+#shop-service .shop-service-b ul li {
+font: 12px/22px ""; }
+#shop-service .shop-service-b ul li:nth-child(1) {
+font: 14px/28px "";
+color: #333; }
+#shop-service .shop-service-b ul li a {
+color: #a5a5a5; }
+#shop-service .shop-service-b ul li a:hover {
+color: red; }
+
+
+#footer {
+padding: 20px 0 24px;
+background: #f7f7f7; }
+#footer .footer-t {
+position: relative; }
+#footer .footer-t span {
+display: inline-block;
+width: 315px; }
+#footer .footer-t span i {
+float: left;
+display: inline-block;
+width: 45px;
+height: 45px;
+margin-right: 8px; }
+#footer .footer-t span b {
+float: left; }
+#footer .footer-t span:nth-child(1) {
+margin-right: 20px; }
+#footer .footer-t span:nth-child(1) i {
+background: url(../images/ui.png) 0 -135px no-repeat; }
+#footer .footer-t span:nth-child(2) i {
+background: url(../images/ui.png) -45px -135px no-repeat; }
+#footer .footer-t span p {
+width: 200px;
+font: 16px/25px "";
+color: #333; }
+#footer .footer-t span a {
+color: #999;
+font-weight: 400;
+font-size: 12px; }
+#footer .footer-t span a:hover {
+color: red; }
+#footer .footer-t .customer {
+position: absolute;
+top: 0;
+right: 0; }
+#footer .footer-t .customer i {
+width: 40px;
+height: 25px; }
+#footer .footer-t .customer em {
+float: left;
+font: 12px/14px "";
+color: #373737;
+margin-right: 20px; }
+#footer .footer-t .customer em:nth-child(1) i {
+background: url(../images/ui.png) -105px -135px no-repeat; }
+#footer .footer-t .customer em:nth-child(2) i {
+background: url(../images/ui.png) -185px -135px no-repeat; }
+#footer .footer-t .customer em img {
+width: 90px;
+height: 90px; }
+#footer .footer-c {
+margin-top: 36px;
+font: 14px/22px "";
+color: #999;
+padding-bottom: 10px; }
+#footer .footer-c a {
+color: #333;
+margin-right: 5px; }
+#footer .footer-c a:hover {
+color: red; }
+#footer .footer-b {
+padding-top: 10px;
+border-top: 1px solid rgba(0, 0, 0, 0.2);
+font: 10px/18px ""; }
+#footer .footer-b a {
+display: inline-block;
+color: #999; }
+#footer .footer-b a i {
+background: url(../images/ui.png) 0 -180px no-repeat; }
+#footer .footer-b a:nth-child(2) i {
+background-position: -35px -180px; }
+#footer .footer-b a:nth-child(3) i {
+background-position: -70px -180px; }
+#footer .footer-b a:nth-child(4) i {
+background-position: -105px -180px; }
+#footer .footer-b a:nth-child(5) i {
+background-position: -140px -180px; }
+#footer .footer-b a:nth-child(6) i {
+background-position: -175px -180px; }
+#footer .footer-b a span {
+display: inline-block;
+width: 109spx;
+vertical-align: middle; }
+#footer .footer-b i {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  margin-right: 10px; }

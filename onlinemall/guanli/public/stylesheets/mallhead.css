@@ -1,0 +1,104 @@
+.header {
+    font: 14px/30px "";
+    background: #f5f5f5;
+    color: #6c6c6c;
+  }
+  .header a {
+    color: #6c6c6c;
+  }
+  .header .header-l {
+    float: left;
+  }
+  .header .header-l span {
+    margin-right: 10px;
+  }
+  .header .header-l .register:hover {
+    color: #ff9000;
+  }
+  .header .header-l .login:hover {
+    color: #ff9000;
+  }
+  .header .header-l .layout:hover {
+    color: #ff9000;
+  }
+  .header .header-r {
+    float: right;
+  }
+  .header .header-r i {
+    font-style: normal;
+    text-align: center;
+    width: 30px;
+    margin-left: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    background: #333;
+    color: #fff;
+  }
+  .search .logo {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-left: 20px;
+  }
+  .search .logo img {
+    width: 100%;
+  }
+  .search .search-child {
+    float: left;
+    margin: 20px 0 0 200px;;
+  }
+  .search .search-child .txt span {
+    display: inline-block;
+    width: 54px;
+    font: 14px/24px "";
+    color: #ff9000;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+  }
+  .search .search-child .txt span:nth-child(1) {
+    margin: 0 5px 0 18px;
+  }
+  .search .search-child .txt .active {
+    background: #ff9000;
+    color: #fff;
+  }
+  .search .search-child .otxt {
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    border: 1px solid #ff9000;
+    border-radius: 20px 0 0 20px;
+    float: left;
+  }
+  .search .search-child .btn {
+    float: left;
+    height: 32px;
+    border-radius: 0 20px 20px 0;
+    width: 50px;
+    text-align: center;
+    background: #ff9000;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #ff9000;
+  }
+  .nav {
+    background: #ff9000;
+  }
+  .nav ul {
+    padding-left: 20px;
+  }
+  .nav ul li {
+    float: left;
+    font: 16px/32px "";
+    font-weight: 700;
+    margin: 0 30px;
+  }
+  .nav ul li a {
+    color: #fff;
+    display: block;
+    padding: 0 20px;
+  }
+  .nav ul li a:hover {
+    background: #ff5000;
+    border-radius: 20px;
+  }

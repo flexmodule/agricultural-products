@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
   }
   
 })
+
 router.get('/list', function(req, res, next) {
   var offset=req.query.offset;
   var limit=req.query.limit;

@@ -1,0 +1,40 @@
+<div class="header clear">
+  <div class="margin">
+    <div class="header-l">
+      <span>欢迎光临！有机农产品销售商城</span>
+      <%if(isshow){%>
+      <a href="/mallregister" class="register">注册</a>|
+      <a href="/malllogin" class="login">登陆</a>
+      <%}else{%>
+      <a href="javascript:;"><%= headername%></a>
+      <a href="/mallindex/malllogout" class="layout">注销</a>
+      <%}%>
+    </div>
+    <div class="header-r">
+      <ul>
+        <li class="cast"><a href="#"><span>购物车</span><i>99</i></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+  </div>
+</div> 
+<div class="search margin clear">
+  <div class="logo"><img src="/images/logo.png" alt="有机农产品"></div>
+  <div class="search-child">
+    <div class="txt"><span class="active">产品</span><span>店铺</span></div>
+    <div class="searchinput clear"><input type="text" placeholder="请输入店铺或者农产品名称" class="otxt"><input type="button" value="搜索" class="btn"></div>
+  </div>
+</div>
+<div class="nav">
+  <div class="margin">
+    <ul class="clear">
+      <li><a href="javascript:;">全部产品</a></li>
+      <li><a href="javascript:;">水果</a></li>
+      <li><a href="javascript:;">蔬菜</a></li>
+      <li><a href="javascript:;">畜牧水产</a></li>
+      <li><a href="javascript:;">粮油米面</a></li>
+      <li><a href="javascript:;">农副加工</a></li>
+      <li><a href="javascript:;">苗木花草</a></li>
+    </ul>
+  </div>
+</div>

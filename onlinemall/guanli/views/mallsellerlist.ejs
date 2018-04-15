@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/mallpublic.css' />
+    <link rel='stylesheet' href='/stylesheets/mallhead.css' />
+
+    
+  </head>
+  <body>
+    <%- include("./mallhead.ejs",{isshow:isShow,headername:name})%>
+
+    <div class="main">
+      <div class="margin">
+
+      </div>
+    </div>
+    <nav aria-label="Page navigation" class="pagenav" style="text-align:center">
+      <ul class="pagination">
+      </ul>      
+    </nav>
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/javascripts/mallindex.js"></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+
+
+
+				function sameajax(key,attr,type,url){
+        // $("#mainbody").empty();
+        // $(".pagination").empty();
+        $.ajax({
+            url:url,
+            data:{
+                limit:12,offset:0,key:key,type:type
+            },
+            success:(result)=>{
+                renderlist(result.info);
+                renderpage(result.total,key,attr,type);
+            }
+        });
+        // function renderlist(list){
+        //         for(var i=0;i<list.length;i++){
+        //         $tr = $("<tr>").html(`
+        //         <td>${list[i].author}</td>
+        //         <td><a href="/detail?id=${list[i]._id}">${list[i].proname}</a></td>
+        //         <td>${list[i].kindtype}</td>
+        //         <td>${list[i].price}</td>
+        //         <td>${list[i].num}</td>
+        //         <td>${list[i].date}</td>
+        //         <td>
+        //         <a class="btn btn-default" href="/product/fixed?id=${list[i]._id}" role="button">修改</a>
+        //         <a class="btn btn-danger" href="/product/delete?id=${list[i]._id}" role="button">删除</a>
+        //         </td>
+        //             `);
+
+        //         $("#mainbody").append($tr);
+        //     }
+        // };
+        // function renderpage(page,key,attr,type){
+        //     for(var i=0;i<page;i+=8){
+        //         $li = $("<li class="+attr+">").html(`<a>${i/8+1}</a>`);
+        //         if($li.attr("class")==attr){
+        //             $li.click(function(){
+        //             $(this).find("a").addClass("red").parents("li").siblings("li").find("a").removeClass("red");
+        //             rerenderlist($(this).index(),key,type);
+        //         })
+        //         }
+                
+        //         $(".pagination").append($li);
+        //     }
+
+        // };
+        // function rerenderlist(index,key,type){
+        //     $("#mainbody").empty();
+        //     $.ajax({
+        //         url:"/relist",
+        //         data:{limit:8,offset:index*8,key:key,type:type},
+        //         success:(result)=>{
+        //          console.log(result) // 箭头函数解决this 指向
+        //         renderlist(result.info);
+        //         }
+        //     })
+        // }
+      }
+      $(".nav").find("ul").find("li").find("a").on("click",function(){
+                var $text=$(this).text();
+                sameajax($text,"kindpage","kindtype","/relist")
+                
+      });
+        
+        $(".dropdown").find(".dropdown-menu").find("li").on("click",function(){
+                    $(".selected").text($(this).text());
+        })
+
+ 
+        $(".searchbtn").on("click",function(){
+            if($(".selected").text()=="产品名称"){
+                sameajax($(".form-control").val(),"productname","proname","/relist")
+            }else if($(".selected").text()=="日期"){
+                sameajax($(".form-control").val(),"productdate","date","/relist")
+            }
+        }) 
+      </script>
+  </body>
+</html>
