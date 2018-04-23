@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
   	res.render('mallindex', { title: '有机农产品页面',name:"",isShow:true});
   }
 });
+
 router.get("/malllogout",function(req,res){
 	req.session.destroy(()=>{
 		res.redirect("/malllogin");  

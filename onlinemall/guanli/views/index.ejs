@@ -39,6 +39,14 @@
         .prokinds h4 a{
             color:red;
         }
+        .account {
+            text-align: center;
+            margin-top: 70px;
+        }
+        .account button {
+            background: rgba(0, 0, 0, .2);
+            border: 1px solid #999;
+        }
         .arrow{
             position:absolute;
             right:-6px;
@@ -70,6 +78,7 @@
             <li><a href="javascript:;">农副加工</a></li>
             <li><a href="javascript:;">苗木花草</a></li>
         </ul>
+        <div class="account"><a class="btn btn-primary" href="#" role="button">账户管理</a></div>
         <div class="arrow">
         <span> < </span>
         </div>
@@ -148,6 +157,7 @@
                 limit:8,offset:0,key:key,type:type
             },
             success:(result)=>{
+                console.log(result)
                 renderlist(result.info);
                 renderpage(result.total,key,attr,type);
             }

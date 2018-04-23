@@ -93,7 +93,7 @@
         function rerenderlist(index,key,type){
             $("#mainbody").empty();
             $.ajax({
-                url:"/mallsellerlist/relist",
+                url:"/mallindex/relist",
                 data:{limit:10,offset:index*10,key:key,type:type},
                 success:(result)=>{
                  console.log(result) // 箭头函数解决this 指向
@@ -103,9 +103,9 @@
         }
       }
       if(key!="全部产品"){
-        sameajax(key,"kindpage","kindtype","/mallsellerlist/list")
+        sameajax(key,"kindpage","kindtype","/mallindex/list")
       }else{
-        sameajax(key,"kindpage","kindtype","/mallsellerlist/relist")
+        sameajax(key,"kindpage","kindtype","/mallindex/relist")
       }
       
 

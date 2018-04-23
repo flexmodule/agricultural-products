@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     name: "usersessID",//sessionID，这个值可以随意编造
     secret:"dw3243dwdsgfh",//要存入cookie的码（随机生成的密钥）
-    cookie: {maxAge: 1000*3600 }, //1小时
+    cookie: {maxAge: 1000*36000 }, //1小时
     resave: true,
     saveUninitialized: true
 })); 

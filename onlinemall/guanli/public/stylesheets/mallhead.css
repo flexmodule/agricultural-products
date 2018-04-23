@@ -24,6 +24,12 @@
   .header .header-r {
     float: right;
   }
+  .header .header-r ul li{
+    float: right;
+  }
+  .header .header-r ul li.cast{
+    margin: 0 10px;
+  }
   .header .header-r i {
     font-style: normal;
     text-align: center;

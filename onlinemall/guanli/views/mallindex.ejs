@@ -38,8 +38,7 @@
           </dl>
           <dl>
             <dt>资讯2</dt>
-            <dd>投资约70亿元 中国有机农产品电商产业小镇项落户嘉陵</dd>
-            <dd>洪雅县三宝镇召开绿色有机农产品产业发展座谈会</dd>
+            <dd>投资约70亿元 中国有机农产品电商产业 
           </dl>
           <dl>
             <dt>资讯3</dt>
@@ -47,7 +46,7 @@
             <dd>洪雅县三宝镇召开绿色有机农产品产业发展座谈会</dd>
           </dl>
         </div>
-      </div>
+      </div>·
     </div>
     <div class="footer">
       <div id="shop-service" class="margin">
@@ -202,17 +201,16 @@
 
 
 				function sameajax(key,attr,type,url){
-        // $("#mainbody").empty();
-        // $(".pagination").empty();
         $.ajax({
             url:url,
             data:{
                 limit:12,offset:0,key:key,type:type
             },
             success:(result)=>{
-							console.log(result)
-                renderlist(result.info);
-                renderpage(result.total,key,attr,type);
+              console.log(result)
+              window.location.href=`/mallsellerlist?key=${key}`
+                // renderlist(result.info);
+                // renderpage(result.total,key,attr,type);
             }
         });
         // function renderlist(list){
@@ -261,7 +259,12 @@
       }
       $(".nav").find("ul").find("li").find("a").on("click",function(){
                 var $text=$(this).text();
-                sameajax($text,"kindpage","kindtype","/mallsellerlist")                
+                window.location.href=`/mallsellerlist?key=${$text}&attr=${""}&type=${""}`
+                // if($text!="全部产品"){
+                //   sameajax($text,"kindpage","kindtype","/mallindex/list") 
+                // }else {
+                //   sameajax($text,"kindpage","kindtype","/mallindex/relist")
+                // }                   
       });
          
         $(".dropdown").find(".dropdown-menu").find("li").on("click",function(){
