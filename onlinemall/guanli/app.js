@@ -15,6 +15,7 @@ var mallIndex=require("./routes/mallindex");
 var mallLogin=require("./routes/malllogin");
 var mallRegister=require("./routes/mallregister");
 var mallSellerlist=require("./routes/mallsellerlist");
+var mallDetail=require("./routes/malldetail");
 var session=require("express-session");
 var app = express();
 
@@ -52,6 +53,7 @@ app.use('/mallindex',mallIndex);
 app.use('/malllogin',mallLogin);
 app.use('/mallregister',mallRegister);
 app.use('/mallsellerlist',mallSellerlist);
+app.use('/malldetail',mallDetail);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

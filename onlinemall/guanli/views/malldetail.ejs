@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/mallsellerlist.css' />  
   </head>
   <body>
-    <%- include("./mallhead.ejs",{isshow:isShow,headername:name})%>
+    <%- include("./mallhead.ejs",{isshow:isShow,headername:name,isSeller:false,sellername:shopname})%>
 
     <div class="main">
       <div class="margin">
@@ -102,11 +102,11 @@
             })
         }
       }
-      if(key!="全部产品"){
-        sameajax(key,"kindpage","kindtype","/mallindex/list")
-      }else{
-        sameajax(key,"kindpage","kindtype","/mallindex/relist")
-      }
+      // if(key!="全部产品"){
+      //   sameajax(key,"kindpage","kindtype","/mallindex/list")
+      // }else{
+      //   sameajax(key,"kindpage","kindtype","/mallindex/relist")
+      // }
       
 
 

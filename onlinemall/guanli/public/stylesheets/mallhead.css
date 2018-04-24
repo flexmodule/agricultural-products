@@ -53,6 +53,17 @@
     float: left;
     margin: 20px 0 0 200px;;
   }
+  .search .sellerName {
+    float: left;
+    margin: 20px 0 0 200px;;
+  }
+  .search .sellerName {
+    font: 32px/50px "";
+  }
+  .search .sellerName b {
+    color: red;
+    margin: 0 10px;
+  }
   .search .search-child .txt span {
     display: inline-block;
     width: 54px;
@@ -75,10 +86,12 @@
     border: 1px solid #ff9000;
     border-radius: 20px 0 0 20px;
     float: left;
+    box-sizing: border-box;
   }
   .search .search-child .btn {
     float: left;
-    height: 32px;
+    box-sizing: border-box;
+    height: 30px;
     border-radius: 0 20px 20px 0;
     width: 50px;
     text-align: center;

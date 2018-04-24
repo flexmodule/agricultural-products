@@ -20,10 +20,16 @@
 </div> 
 <div class="search margin clear">
   <div class="logo"><a href="/mallindex"><img src="/images/logo.png" alt="有机农产品"></a></div>
+  <%if(isSeller){%>
   <div class="search-child">
     <div class="txt"><span class="active">产品</span><span>店铺</span></div>
     <div class="searchinput clear"><input type="text" placeholder="请输入店铺或者农产品名称" class="otxt"><input type="button" value="搜索" class="btn"></div>
   </div>
+  <%}else{%>
+  <div class="sellerName">
+  <div class="sellerName-info"><span>欢迎光临！</span><b><%= sellername%></b><span>店铺</span></div>
+  </div>
+  <%}%>
 </div>
 <div class="nav">
   <div class="margin">

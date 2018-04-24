@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/mallsellerlist.css' />  
   </head>
   <body>
-    <%- include("./mallhead.ejs",{isshow:isShow,headername:name})%>
+    <%- include("./mallhead.ejs",{isshow:isShow,headername:name,isSeller:false,sellername:""})%>
 
     <div class="main">
       <div class="margin">
@@ -57,12 +57,17 @@
               console.log(result)
                 renderlist(result.info);
                 renderpage(result.total,key,attr,type);
+                $("#mainbody").find("li").on("click",function(){
+                  var dataid=$(this).attr("dataid");
+                  var sellername=$(this).attr("sellername");
+                  window.location.href=`/malldetail?dataid=${dataid}&sellername=${sellername}`
+                })
             }
         });
         function renderlist(list){
                 var $oLi=""
                 for(var i=0;i<list.length;i++){
-                 $oLi += `<li>
+                 $oLi += `<li dataId=${list[i]._id} sellername=${list[i].author}>
                               <div class="li-header"><img src="${list[i].pathname}"></div>
                               <div class="li-body">
                                 <h3><span>品名：${list[i].proname}</span><span>价格：${list[i].price}</span></h3>
@@ -71,7 +76,7 @@
                                 <p><span>店主：${list[i].author}</span></p>
                               </div>
                               <div class="li-footer">
-                                  <a class="btn btn-default" href="#" role="button">查看产品详情</a>
+                                  <a class="btn btn-default" href="javascript:;" role="button">查看产品详情</a>
                               </div>
                           </li>`
             }
@@ -98,6 +103,11 @@
                 success:(result)=>{
                  console.log(result) // 箭头函数解决this 指向
                 renderlist(result.info);
+                $("#mainbody").find("li").on("click",function(){
+                  var dataid=$(this).attr("dataid");
+                  var sellername=$(this).attr("sellername");
+                  window.location.href=`/malldetail?dataid=${dataid}&sellername=${sellername}`
+                })
                 }
             })
         }
@@ -107,7 +117,7 @@
       }else{
         sameajax(key,"kindpage","kindtype","/mallsellerlist/relist")
       }
-      
+
 
 
       // $(".nav").find("ul").find("li").find("a").on("click",function(){

@@ -9,7 +9,7 @@
     
   </head>
   <body>
-    <%- include("./mallhead.ejs",{isshow:isShow,headername:name})%>
+    <%- include("./mallhead.ejs",{isshow:isShow,headername:name,isSeller:true,sellername:""})%>
     <div class="banner">
       <div class="swiper-container">
         <div class="swiper-wrapper">
@@ -164,7 +164,7 @@
 					<p>©2000-2017  有机农产品商务有限公司版权所有  京公安网备11010502027062  沪ICP备11009419号  沪B2-20120004号</p>
 				</div>
 				<div class="footer-b">
-					    <a href="#"><i></i><span>经营性网站备案信息</span></a>
+					  <a href="#"><i></i><span>经营性网站备案信息</span></a>
 						<a href="#"><i></i><span>可信网站信用评价</span></a>
 						<a href="#"><i></i><span>诚信网站</span></a>
 						<a href="#"><i></i><span>朝阳网路警察</span></a>
@@ -177,9 +177,9 @@
 
     </div>
 		
-		<script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
-		<!-- <script src="/javascripts/mallindex.js"></script> -->
+		
     <script src="/bootstrap/js/swiper.min.js"></script>
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
           slidesPerView: 1,

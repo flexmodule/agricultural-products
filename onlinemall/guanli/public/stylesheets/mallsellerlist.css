@@ -6,6 +6,7 @@
     margin: 0 20px 20px 0;
     width: 220px;
     border: 1px solid #999;
+    cursor: pointer;
 }
 #mainbody li .li-header {
     width: 218px;
@@ -17,12 +18,13 @@
 }
 #mainbody li .li-body h3 {
     font: 16px/22px "";
-    display: flex;
     height: 44px;
-    justify-content: space-between;
     padding: 0 10px;
     box-sizing: border-box;
     margin: 5px 0;
+}
+#mainbody li .li-body h3 span {
+    display: block;
 }
 #mainbody li .li-body h4 {
     background: #999;
@@ -39,7 +41,7 @@
     font: 12px/22px "";
     color: red;
     padding: 0 10px;
-    height: 44px;
+    height: 22px;
     box-sizing: border-box;
     margin: 5px 0;
 }
