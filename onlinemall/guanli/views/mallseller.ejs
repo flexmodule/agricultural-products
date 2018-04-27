@@ -5,33 +5,14 @@
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/mallpublic.css' />
     <link rel='stylesheet' href='/stylesheets/mallhead.css' />
-    <link rel='stylesheet' href='/stylesheets/malldetail.css' />  
+    <link rel='stylesheet' href='/stylesheets/mallsellerlist.css' />  
   </head>
   <body>
-    <%- include("./mallhead.ejs",{isshow:isShow,headername:name,isSeller:false,sellername:shopname})%>
+    <%- include("./mallhead.ejs",{isshow:isShow,headername:name,isSeller:false,sellername:""})%>
 
     <div class="main">
-      <div class="margin clearfix">
-        <div class="main-l">
-         <div class="main-imginfo">
-           <img src="<%- info.pathname%>">
-         </div>
-        </div>
-        <div class="main-r">
-          <h3 class="prodetail"><%- info.detail%></h3>
-          <p class="pronme"><%- info.proname%></p>
-          <p class="type"><%- info.kindtype%></p>
-          <div class="price-num">
-            <p class="price"><i>价格：</i><%- info.price%></p>
-            <p class="overnum"><i>库存：</i><b><%- info.num%></b></p>
-          </div>
-          <p class="purnum"><i>数量：</i><span class="clearfix"><b class="reduce">-</b><input type="num" name="" value="1"><b class="plus">+</b></span></p>
-          <div class="opera">
-            <i class="castinfo">成功加入购物车，请到购物车页面查看</i>
-            <span class="cast">加入购物车</span>
-            <span class="buy">立即购买</span>
-          </div>
-        </div>
+      <div class="margin">
+        <ul id="mainbody" class="clear"></ul>
       </div>
     </div>
     <nav aria-label="Page navigation" class="pagenav" style="text-align:center">
@@ -50,7 +31,6 @@
         var key;
         var attr;
         var type;
-        var dataid;
         if(window.location.search.split("?").length>1){
           var keyword=window.location.search.split("?")[1].split("&");
           var keywordlength=window.location.search.split("?")[1].split("&").length;
@@ -61,96 +41,10 @@
               attr=decodeURIComponent(keyword[i].split("=")[1]);
             }else if(keyword[i].split("=")[0]=="type"){
               type=decodeURIComponent(keyword[i].split("=")[1]);
-            }else if(keyword[i].split("=")[0]=="dataid"){
-              dataid=decodeURIComponent(keyword[i].split("=")[1]);
             }
           }
 
         }
-        //点击增加数量
-        $(".purnum").find(".reduce").on("click",function(){
-          let oNum=Number($(".purnum").find("input").val());
-          if(oNum>1) {
-            oNum-=1;
-            $(".purnum").find("input").val(`${oNum}`)
-          }
-        })
-        $(".purnum").find(".plus").on("click",function(){
-          let oNum=Number($(".purnum").find("input").val());
-          let overNum=$(".overnum").find("b").html();
-          if(oNum<overNum) {
-            oNum+=1;
-            $(".purnum").find("input").val(`${oNum}`)
-          }
-        })
-        //点击加入购物车
-        $(".opera").find(".cast").on("click",function(){
-          let onum=Number($(".purnum").find("input").val());
-          let opronme=$(".pronme").html();
-          $(".castinfo").show()
-          setTimeout(function(){
-            $(".castinfo").hide();
-          },1000);
-          $.ajax({
-            url:"/mallcast/castjudge",
-            data:{
-                id:dataid,num:onum,name:opronme
-            },
-            success:(result)=>{
-              console.log(result)
-            }
-        });
-        })
-  //   function joincast(info){
-  //   if(Object.keys(castlist).length!=0){
-  //     var count=0;
-  //     for(var key in castlist){
-  //       console.log(key)
-  //       if(key==info.rid){
-  //         for(var i=0;i<castlist[key].length;i++){
-  //           if(castlist[key][i].itemid==info.itemid){
-  //             castlist[key][i].num++;
-  //             break;
-  //           }
-  //           }
-  //           if(i==castlist[key].length){
-  //             var obj={};
-  //             obj.itemid=info.itemid;
-  //             obj.itempath=info.itempath;
-  //             obj.iname=info.iname;
-  //             obj.rname=info.rname;
-  //             obj.num=1;
-  //             obj.iprice=info.iprice;
-  //             castlist[key].push(obj);
-  //           }   
-  //       }else{
-  //         ++count;
-  //       }
-  //     }
-  //     console.log(count,Object.keys(castlist).length)
-  //     if(count==Object.keys(castlist).length){
-  //       var obj1={};
-  //       obj1.itemid=info.itemid;
-  //       obj1.itempath=info.itempath;
-  //       obj1.iname=info.iname;
-  //       obj1.rname=info.rname;
-  //       obj1.num=1;
-  //       obj1.iprice=info.iprice;
-  //       castlist[info.rid]=[obj1];
-  //     }
-  //   }else{
-  //     var obj2={};
-  //     obj2.itemid=info.itemid;
-  //     obj2.itempath=info.itempath;
-  //     obj2.iname=info.iname;
-  //     obj2.rname=info.rname;
-  //     obj2.num=1;
-  //     obj2.iprice=info.iprice;
-  //     castlist[info.rid]=[obj2];
-  //   }
-  //   localStorage.setItem('castinfo',JSON.stringify(castlist));
-  // }
-        //点击购买
 				function sameajax(key,attr,type,url){
         $("#mainbody").empty();
         $(".pagination").empty();
@@ -163,12 +57,17 @@
               console.log(result)
                 renderlist(result.info);
                 renderpage(result.total,key,attr,type);
+                $("#mainbody").find("li").on("click",function(){
+                  var dataid=$(this).attr("dataid");
+                  var sellername=$(this).attr("sellername");
+                  window.location.href=`/malldetail?dataid=${dataid}&sellername=${sellername}`
+                })
             }
         });
         function renderlist(list){
                 var $oLi=""
                 for(var i=0;i<list.length;i++){
-                 $oLi += `<li>
+                 $oLi += `<li dataId=${list[i]._id} sellername=${list[i].author}>
                               <div class="li-header"><img src="${list[i].pathname}"></div>
                               <div class="li-body">
                                 <h3><span>品名：${list[i].proname}</span><span>价格：${list[i].price}</span></h3>
@@ -177,7 +76,7 @@
                                 <p><span>店主：${list[i].author}</span></p>
                               </div>
                               <div class="li-footer">
-                                  <a class="btn btn-default" href="#" role="button">查看产品详情</a>
+                                  <a class="btn btn-default" href="javascript:;" role="button">查看产品详情</a>
                               </div>
                           </li>`
             }
@@ -199,21 +98,26 @@
         function rerenderlist(index,key,type){
             $("#mainbody").empty();
             $.ajax({
-                url:"/mallindex/relist",
+                url:"/mallsellerlist/relist",
                 data:{limit:10,offset:index*10,key:key,type:type},
                 success:(result)=>{
                  console.log(result) // 箭头函数解决this 指向
                 renderlist(result.info);
+                $("#mainbody").find("li").on("click",function(){
+                  var dataid=$(this).attr("dataid");
+                  var sellername=$(this).attr("sellername");
+                  window.location.href=`/malldetail?dataid=${dataid}&sellername=${sellername}`
+                })
                 }
             })
         }
       }
-      // if(key!="全部产品"){
-      //   sameajax(key,"kindpage","kindtype","/mallindex/list")
-      // }else{
-      //   sameajax(key,"kindpage","kindtype","/mallindex/relist")
-      // }
-      
+      if(key!="全部产品"){
+        sameajax(key,"kindpage","kindtype","/mallsellerlist/list")
+      }else{
+        sameajax(key,"kindpage","kindtype","/mallsellerlist/relist")
+      }
+
 
 
       // $(".nav").find("ul").find("li").find("a").on("click",function(){
@@ -236,3 +140,4 @@
       </script>
   </body>
 </html>
+ 
