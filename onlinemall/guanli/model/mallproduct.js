@@ -2,7 +2,8 @@ var mongoose=require("mongoose");
 var Schema=mongoose.Schema;
 
 var obj={
-	author:String,
+    author:String,
+    buyer:String,
     proname:String,
     kindtype:String,
     price:String,

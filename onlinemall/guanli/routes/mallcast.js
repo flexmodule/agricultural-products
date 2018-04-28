@@ -8,19 +8,15 @@ router.get('/', function(req, res, next) {
       mallUser.find({
         name:req.session.malluserInfo["name"]
       }).then(result1=>{
-        Product.find({
-            _id:req.query.id
+        mallProduct.find({
+            buyer:req.cookies["mallcurrentuser"]
           }).then(result=>{
-            res.render('malldetail', { title: '有机农产品页面详情页面',name:req.cookies["mallcurrentuser"], isShow:false,shopname:req.query.sellername,info:result[0]});
+            console.log(result)
+            res.render('mallcast', { title: '有机农产品购物车页面',name:req.cookies["mallcurrentuser"], isShow:false,info:result});
           })
       })
     }else{
-      Product.find({
-          _id:req.query.id
-        }).then(result=>{
-          console.log(result)
-          res.render('malldetail', { title: '有机农产品页面详情页面',name:"",isShow:true,shopname:req.query.sellername,info:result[0]});
-        })
+      res.send(`您还未登录，请<a href="/malllogin">登录</a>`);
     }
 });
 router.get('/castjudge', function(req, res, next) {
@@ -29,21 +25,27 @@ router.get('/castjudge', function(req, res, next) {
           }).then(presult=>{
             
             mallProduct.find({
-          _id:req.query.id
+              id:req.query.id,
            }).then(mpresult=>{
           if(mpresult.length==0){
             mallProduct.create({
                 author:presult[0].author,
+                id:req.query.id,
+                buyer:req.cookies["mallcurrentuser"],
                 proname:presult[0].proname,
                 kindtype:presult[0].kindtype,
                 price:presult[0].price,
-                num:req.body.num,
+                num:req.query.num,
                 date:presult[0].date,
                 detail:presult[0].detail,
                 pathname:presult[0].pathname
               })
           }else {
-            mallProduct.findByIdAndUpdate(req.body.id,{$set:{proname:presult[0].proname,price:presult[0].price,kindtype:presult[0].kindtype,num:req.body.num,date:presult[0].date,detail:presult[0].detail,pathname:presult[0].pathname}}).then(result=>{
+            var oNum=Number(mpresult[0].num)+Number(req.query.num)
+            mallProduct.update({
+              buyer:req.cookies["mallcurrentuser"],
+              proname:presult[0].proname
+            },{$set:{id:req.query.id,proname:presult[0].proname,price:presult[0].price,kindtype:presult[0].kindtype,num:oNum,date:presult[0].date,detail:presult[0].detail,pathname:presult[0].pathname}}).then(result=>{
             })
           }
           res.send({
@@ -53,69 +55,22 @@ router.get('/castjudge', function(req, res, next) {
           })
       
 });
-router.get('/list', function(req, res, next) {
-  console.log(req.query)
-  var offset=req.query.offset;
-  var limit=req.query.limit;
-  var key=req.query.key;
-  var choose;
-  if(req.query.type=="kindtype"){
-        choose=req.query.type;
-  }else if(req.query.type=="proname"){
-        choose=req.query.type;
-  }else if(req.query.type=="date"){
-        choose=req.query.type;
+router.get('/castlist', function(req, res, next) {
+  if(req.session.malluserInfo){
+    mallUser.find({
+      name:req.session.malluserInfo["name"]
+    }).then(result1=>{
+      mallProduct.find({
+          buyer:req.cookies["mallcurrentuser"]
+        }).then(result=>{
+          res.send({
+            info:result
+          });
+        })
+    })
+  }else{
+    res.send(`您还未登录，请<a href="/malllogin">登录</a>`);
   }
-  var query={};
-  query[choose]=key;
-  Promise.all([Product.count(),Product.find(query,{},{limit:limit,skip:offset}),Product.find(query,{})]).then(result=>{
-    console.log(result)
-     if(req.session.malluserInfo){
-      mallUser.find({
-            name:req.session.malluserInfo["name"]
-      }).then(result=>{
-        res.send({
-          name:req.cookies["mallcurrentuser"],
-          isShow:false,
-          total:result[0],
-          info:result[1]
-         });
-      })
-      }else{
-        res.send({
-          name:"",
-          isShow:true,
-          total:result[1].length,
-          info:result[1]
-         });
-      }
-  })   
 });
-router.get('/relist', function(req, res, next) {
-  console.log(req.query)
-  var offset=req.query.offset;
-  var limit=req.query.limit;
-  Promise.all([Product.count({}),Product.find({},{},{limit:limit,skip:offset})]).then(result=>{
-    console.log(result)
-     if(req.session.malluserInfo){
-      mallUser.find({
-            name:req.session.malluserInfo["name"]
-      }).then(result=>{
-        res.send({
-          name:req.cookies["mallcurrentuser"],
-          isShow:false,
-          total:result[0],
-          info:result[1]
-         });
-      })
-      }else{
-        res.send({
-          name:"",
-          isShow:true,
-          total:result[0],
-          info:result[1]
-         });
-      }
-  })   
-});
+
   module.exports = router;

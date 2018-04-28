@@ -39,6 +39,7 @@
 .main-r .purnum span {
 	display: inline-block;
 	vertical-align: middle;
+	user-select: none;
 }
 .main-r .purnum span b {
 	display: inline-block;

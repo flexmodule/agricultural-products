@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/malldetail.css' />  
   </head>
   <body>
-    <%- include("./mallhead.ejs",{isshow:isShow,headername:name,isSeller:false,sellername:shopname})%>
+    <%- include("./mallhead.ejs",{isshow:isShow,iscast:true,headername:name,isSeller:false,sellername:shopname})%>
 
     <div class="main">
       <div class="margin clearfix">
@@ -22,10 +22,10 @@
           <p class="pronme"><%- info.proname%></p>
           <p class="type"><%- info.kindtype%></p>
           <div class="price-num">
-            <p class="price"><i>价格：</i><%- info.price%></p>
+            <p class="price"><i>价格：</i><%= info.price%></p>
             <p class="overnum"><i>库存：</i><b><%- info.num%></b></p>
           </div>
-          <p class="purnum"><i>数量：</i><span class="clearfix"><b class="reduce">-</b><input type="num" name="" value="1"><b class="plus">+</b></span></p>
+          <p class="purnum"><i>数量：</i><span class="clearfix"><b class="reduce">-</b><input type="num" name="" value="1" disabled="disabled"><b class="plus">+</b></span></p>
           <div class="opera">
             <i class="castinfo">成功加入购物车，请到购物车页面查看</i>
             <span class="cast">加入购物车</span>
@@ -87,20 +87,38 @@
         $(".opera").find(".cast").on("click",function(){
           let onum=Number($(".purnum").find("input").val());
           let opronme=$(".pronme").html();
-          $(".castinfo").show()
-          setTimeout(function(){
-            $(".castinfo").hide();
-          },1000);
           $.ajax({
             url:"/mallcast/castjudge",
             data:{
                 id:dataid,num:onum,name:opronme
             },
             success:(result)=>{
-              console.log(result)
+              if(result=="您还未登录，请登录"){
+                $(".castinfo").html("您还未登录，请登录");
+                $(".castinfo").show();
+                setTimeout(function(){
+                  $(".castinfo").hide();
+                },1000);
+              }else{
+                $(".castinfo").html("成功加入购物车，请到购物车页面查看");
+                $(".castinfo").show();
+                setTimeout(function(){
+                  $(".castinfo").hide();
+                },1000);
+              }
             }
         });
         })
+        //点击购买
+        $(".buy").on("click",function(){
+          let onum=Number($(".purnum").find("input").val());
+          let opronme=$(".pronme").html();
+          window.location.href=`/mallbuy?id=${dataid}&num=${onum}&name=${opronme}`
+        })
+
+
+
+
   //   function joincast(info){
   //   if(Object.keys(castlist).length!=0){
   //     var count=0;

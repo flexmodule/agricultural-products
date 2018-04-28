@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/mallpublic.css' />
+    <link rel='stylesheet' href='/stylesheets/mallhead.css' />
+    <link rel='stylesheet' href='/stylesheets/mallcast.css' />  
+  </head>
+  <body>
+    <%- include("./mallhead.ejs",{isshow:isShow,iscast:false,headername:name,isSeller:true,sellername:""})%>
+
+    <div class="main">
+      <div class="margin">
+        <ul id="mainbody" class="clear">
+  
+        </ul>
+        <div class="purchase"><span>购买</span></div>
+      </div>
+    </div>
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+
+
+
+
+        $.ajax({
+            url:"/mallcast/castlist",
+            data:{},
+            success:(result)=>{
+              console.log(result.info)
+              renderlist(result.info);
+              opera();
+              purchase();
+            }
+        });
+        
+        function renderlist(list){
+                var $oLi=""
+                console.log(list.length)
+                for(var i=0;i<list.length;i++){
+                 $oLi += `<li>
+                              <div class="li-t">店铺：<span>${list[i].author}</span></div>
+                              <div class="li-b clearfix">
+                                <div class="li-b-l">
+                                    <input type="checkbox" class="check">
+                                    <img src="${list[i].pathname}" class="infoimg">
+                                    <span>${list[i].proname}</span>
+                                    <span>${list[i].detail}</span>
+                                </div>
+                                <div class="li-b-c">
+                                  <span class="price">${list[i].price}</span>
+                                  <span class="purnum clearfix"><b class="reduce">-</b><input type="number" name="" value="${list[i].num}" disabled="disabled"><b class="plus">+</b></span>
+                                  <span class="total"></span>
+                                </div>
+                                <div class="li-b-r">
+                                    <span>删除</span>
+                                </div>
+                              </div>
+                          </li>`
+            }
+            $("#mainbody").html(`${$oLi}`);
+        };
+        function opera() {
+          $(".purnum").find(".reduce").on("click",function(){
+            let oNum=Number($(this).siblings("input").val());
+          if(oNum>1) {
+            oNum-=1;
+            $(this).siblings("input").val(`${oNum}`)
+          }
+        })
+        $(".purnum").find(".plus").on("click",function(){
+          let oNum=Number($(this).siblings("input").val());
+            oNum+=1;
+            $(this).siblings("input").val(`${oNum}`)
+        })
+        };
+        function purchase() {
+          $(".purchase").find("span").on("click",function(){
+            console.log($(".check").attr("type"))
+            
+          })
+        }
+
+   
+
+      </script>
+  </body>
+</html>

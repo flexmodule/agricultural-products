@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/mallsellerlist.css' />  
   </head>
   <body>
-    <%- include("./mallhead.ejs",{isshow:isShow,headername:name,isSeller:true,sellername:""})%>
+    <%- include("./mallhead.ejs",{isshow:isShow,iscast:true,headername:name,isSeller:true,sellername:""})%>
 
     <div class="main">
       <div class="margin">
@@ -117,26 +117,6 @@
       }else{
         sameajax(key,"kindpage","kindtype","/mallsellerlist/relist")
       }
-
-
-
-      // $(".nav").find("ul").find("li").find("a").on("click",function(){
-      //           var $text=$(this).text();
-      //           sameajax($text,"kindpage","kindtype","/relist")    
-      // });
-        
-      //   $(".dropdown").find(".dropdown-menu").find("li").on("click",function(){
-      //               $(".selected").text($(this).text());
-      //   })
-
- 
-      //   $(".searchbtn").on("click",function(){
-      //       if($(".selected").text()=="产品名称"){
-      //           sameajax($(".form-control").val(),"productname","proname","/relist")
-      //       }else if($(".selected").text()=="日期"){
-      //           sameajax($(".form-control").val(),"productdate","date","/relist")
-      //       }
-      //   }) 
       </script>
   </body>
 </html>

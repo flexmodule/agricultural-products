@@ -18,6 +18,8 @@ var mallSellerlist=require("./routes/mallsellerlist");
 var mallDetail=require("./routes/malldetail");
 var mallSeller=require("./routes/mallseller");
 var mallCast=require("./routes/mallcast");
+var mallOrder=require("./routes/mallorder");
+var mallBuy=require("./routes/mallbuy");
 var session=require("express-session");
 var app = express();
 
@@ -58,6 +60,8 @@ app.use('/mallsellerlist',mallSellerlist);
 app.use('/malldetail',mallDetail);
 app.use('/mallseller',mallSeller);
 app.use('/mallcast',mallCast);
+app.use('/mallorder',mallOrder);
+app.use('/mallbuy',mallBuy);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

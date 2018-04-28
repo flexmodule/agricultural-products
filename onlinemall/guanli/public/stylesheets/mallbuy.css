@@ -1,0 +1,19 @@
+.info {
+  margin: 30px 0;
+  font: 24px/30px "";
+}
+.purchase {
+  text-align: right;
+  margin-right: 100px;
+}
+.purchase span {
+  display: inline-block;
+  width: 136px;
+	height: 40px;
+	text-align: center;
+	font: 20px/40px "";
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #F22D00;
+  background: #F22D00;
+}

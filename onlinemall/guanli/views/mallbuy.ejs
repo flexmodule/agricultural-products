@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/mallpublic.css' />
+    <link rel='stylesheet' href='/stylesheets/mallhead.css' />
+    <link rel='stylesheet' href='/stylesheets/mallbuy.css' />  
+  </head>
+  <body>
+    <%- include("./mallhead.ejs",{isshow:isShow,iscast:false,headername:name,isSeller:true,sellername:""})%>
+
+    <div class="main">
+      <div class="margin">
+        <div class="info">您确定要购买此款吗?</div>
+        <ul id="mainbody" class="clear">
+          <li></li>
+        </ul>
+        <div class="purchase"><span>确认付款</span></div>
+      </div>
+    </div>
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+
+
+
+
+        $.ajax({
+            url:"/mallbuy/info",
+            data:{},
+            success:(result)=>{
+              console.log(result.info)
+            }
+        });
+        
+      
+   
+
+      </script>
+  </body>
+</html>

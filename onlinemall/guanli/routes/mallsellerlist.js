@@ -29,8 +29,7 @@ router.get('/list', function(req, res, next) {
   }
   var query={};
   query[choose]=key;
-  Promise.all([Product.count(),Product.find(query,{},{limit:limit,skip:offset}),Product.find(query,{})]).then(result=>{
-    console.log(result)
+  Promise.all([Product.count(),Product.find(query,{},{limit:limit,skip:offset}),Product.find(query,{})]).then(presult=>{
      if(req.session.malluserInfo){
       mallUser.find({
             name:req.session.malluserInfo["name"]
@@ -38,16 +37,16 @@ router.get('/list', function(req, res, next) {
         res.send({
           name:req.cookies["mallcurrentuser"],
           isShow:false,
-          total:result[0],
-          info:result[1]
+          total:presult[0],
+          info:presult[1]
          });
       })
       }else{
         res.send({
           name:"",
           isShow:true,
-          total:result[1].length,
-          info:result[1]
+          total:presult[1].length,
+          info:presult[1]
          });
       }
   })   
@@ -56,8 +55,7 @@ router.get('/relist', function(req, res, next) {
   console.log(req.query)
   var offset=req.query.offset;
   var limit=req.query.limit;
-  Promise.all([Product.count({}),Product.find({},{},{limit:limit,skip:offset})]).then(result=>{
-    console.log(result)
+  Promise.all([Product.count({}),Product.find({},{},{limit:limit,skip:offset})]).then(presult=>{
      if(req.session.malluserInfo){
       mallUser.find({
             name:req.session.malluserInfo["name"]
@@ -65,16 +63,16 @@ router.get('/relist', function(req, res, next) {
         res.send({
           name:req.cookies["mallcurrentuser"],
           isShow:false,
-          total:result[0],
-          info:result[1]
+          total:presult[0],
+          info:presult[1]
          });
       })
       }else{
         res.send({
           name:"",
           isShow:true,
-          total:result[0],
-          info:result[1]
+          total:presult[0],
+          info:presult[1]
          });
       }
   })   
