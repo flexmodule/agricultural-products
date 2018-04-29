@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/mallpublic.css' />
+    <link rel='stylesheet' href='/stylesheets/mallhead.css' />
+    <link rel='stylesheet' href='/stylesheets/mallorder.css' />  
+  </head>
+  <body>
+    <%- include("./mallhead.ejs",{isshow:isShow,iscast:false,headername:name,isSeller:true,sellername:""})%>
+
+    <div class="main">
+      <div class="margin">
+        <ul id="mainbody" class="clear">
+  
+        </ul>
+      </div>
+    </div>
+    <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+
+
+
+
+        $.ajax({
+            url:"/mallorder/orderlist",
+            data:{},
+            success:(result)=>{
+              console.log(result.info)
+              renderlist(result.info);
+            }
+        });
+        
+        function renderlist(list){
+                var $oLi=""
+                console.log(list.length)
+                for(var i=0;i<list.length;i++){
+                 $oLi += `<li dataid="${list[i]._id}">
+                              <div class="li-t">店铺：<span>${list[i].author}</span></div>
+                              <div class="li-b">
+                                <div class="li-b-t">
+                                    <img src="${list[i].pathname}" class="infoimg">
+                                    <span>${list[i].proname}</span>
+                                    <span>${list[i].detail}</span>
+                                </div>
+                                <div class="li-b-c">
+                                  <div class="price">单价:<span>${list[i].price}</span></div>
+                                  <div class="purnum">您购买的数量：<span>${list[i].num}</span></div>
+                                  <div class="total">总价：<span>${list[i].total}</span></div>
+                                </div>
+                                <div class="li-b-b">
+                                    <a href="/mallorder/delete?id=${list[i]._id}">删除</a>
+                                </div>
+                              </div>
+                          </li>`
+            }
+            $("#mainbody").html(`${$oLi}`);
+        };
+        $(".li-b-b").find("span").on("click",function(){
+
+        })
+      </script>
+  </body>
+</html>

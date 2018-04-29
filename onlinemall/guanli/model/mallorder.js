@@ -9,10 +9,11 @@ var obj={
     kindtype:String,
     price:String,
     num:String,
+    total:String,
     date:String,
     detail:String,
     pathname:String
 }
 
-var model=mongoose.model("mallproduct",new Schema(obj));
+var model=mongoose.model("mallorder",new Schema(obj));
 module.exports=model;

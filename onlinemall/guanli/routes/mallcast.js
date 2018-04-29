@@ -23,7 +23,6 @@ router.get('/castjudge', function(req, res, next) {
   Product.find({
             _id:req.query.id
           }).then(presult=>{
-            
             mallProduct.find({
               id:req.query.id,
            }).then(mpresult=>{
@@ -43,8 +42,7 @@ router.get('/castjudge', function(req, res, next) {
           }else {
             var oNum=Number(mpresult[0].num)+Number(req.query.num)
             mallProduct.update({
-              buyer:req.cookies["mallcurrentuser"],
-              proname:presult[0].proname
+              id:req.query.id,
             },{$set:{id:req.query.id,proname:presult[0].proname,price:presult[0].price,kindtype:presult[0].kindtype,num:oNum,date:presult[0].date,detail:presult[0].detail,pathname:presult[0].pathname}}).then(result=>{
             })
           }
@@ -72,5 +70,9 @@ router.get('/castlist', function(req, res, next) {
     res.send(`您还未登录，请<a href="/malllogin">登录</a>`);
   }
 });
-
+router.get("/delete",function(req,res){
+  mallProduct.findByIdAndRemove(req.query.id).then(result=>{
+    res.redirect("/mallcast");
+  })
+})
   module.exports = router;

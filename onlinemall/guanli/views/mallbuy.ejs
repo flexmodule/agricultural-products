@@ -12,29 +12,71 @@
 
     <div class="main">
       <div class="margin">
-        <div class="info">您确定要购买此款吗?</div>
-        <ul id="mainbody" class="clear">
-          <li></li>
-        </ul>
-        <div class="purchase"><span>确认付款</span></div>
+        <div class="purchase-info">
+            <div class="info">您确定要购买此款吗?</div>
+            <ul id="mainbody" class="clear">
+              <li>
+                <div class="li-t clearfix">
+                  <div class="li-t-l"><img src="<%- info.pathname%>"></div>
+                  <div class="li-t-r"><%- info.detail%></div>
+                </div>
+                <div class="li-c"><i>价格：</i><span><%= info.price%></span><i class="num">您购买的数量：</i><b></b></div>
+                <div class="li-b"><i>总价：</i><span></span>元</div>
+              </li>
+            </ul>
+            <div class="purchase"><span>确认付款</span></div>
+        </div>
+        <div class="finished">你已经成功付款，请到订单里查看</div>
       </div>
     </div>
     <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
     <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
     <script>
-
-
-
-
-        $.ajax({
-            url:"/mallbuy/info",
-            data:{},
+        var key;
+        var attr;
+        var type;
+        var dataid;
+        var num;
+        var totalPrice;
+        var simplePrice;
+        if(window.location.search.split("?").length>1){
+          var keyword=window.location.search.split("?")[1].split("&");
+          var keywordlength=window.location.search.split("?")[1].split("&").length;
+          for(var i=0;i<keywordlength;i++){
+            if(keyword[i].split("=")[0]=="key"){
+              key=decodeURIComponent(keyword[i].split("=")[1]);
+            }else if(keyword[i].split("=")[0]=="attr"){
+              attr=decodeURIComponent(keyword[i].split("=")[1]);
+            }else if(keyword[i].split("=")[0]=="type"){
+              type=decodeURIComponent(keyword[i].split("=")[1]);
+            }else if(keyword[i].split("=")[0]=="id"){
+              dataid=decodeURIComponent(keyword[i].split("=")[1]);
+            }else if(keyword[i].split("=")[0]=="num"){
+              num=decodeURIComponent(keyword[i].split("=")[1]);
+            }
+          }
+        }
+        console.log(num)
+        $("#mainbody").find(".li-c").find("b").html(num);
+        simplePrice=$("#mainbody").find(".li-c").find("span").html();
+        totalPrice=num*parseInt(simplePrice);
+        console.log(totalPrice)
+        $("#mainbody").find(".li-b").find("span").html(totalPrice);
+        //确认付款,加入订单
+        $(".purchase").find("span").on("click",function(){
+          $(".purchase-info").hide();
+          $(".finished").show();
+          $.ajax({
+            url:"/mallorder/orderjudge",
+            data:{
+                id:dataid,num:num,total:totalPrice
+            },
             success:(result)=>{
-              console.log(result.info)
             }
         });
+        })
         
-      
+
    
 
       </script>

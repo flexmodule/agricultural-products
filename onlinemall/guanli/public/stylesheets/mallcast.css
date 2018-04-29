@@ -52,6 +52,9 @@
 }
 #mainbody .li-b .li-b-r {
   margin-top: 30px;
+
+}
+#mainbody .li-b .li-b-r a {
   color: red;
   cursor: pointer;
 }

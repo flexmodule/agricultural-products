@@ -40,7 +40,7 @@
                 var $oLi=""
                 console.log(list.length)
                 for(var i=0;i<list.length;i++){
-                 $oLi += `<li>
+                 $oLi += `<li dataid="${list[i].id}">
                               <div class="li-t">店铺：<span>${list[i].author}</span></div>
                               <div class="li-b clearfix">
                                 <div class="li-b-l">
@@ -55,7 +55,7 @@
                                   <span class="total"></span>
                                 </div>
                                 <div class="li-b-r">
-                                    <span>删除</span>
+                                    <a href="/mallcast/delete?id=${list[i]._id}">删除</a>
                                 </div>
                               </div>
                           </li>`
@@ -78,8 +78,9 @@
         };
         function purchase() {
           $(".purchase").find("span").on("click",function(){
-            console.log($(".check").attr("type"))
-            
+            let id=$(".check:checked").parents("li").attr("dataid");
+            let onum=Number($(".purnum").find("input").val());
+            window.location.href=`/mallbuy?id=${id}&num=${onum}`
           })
         }
 

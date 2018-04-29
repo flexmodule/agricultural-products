@@ -5,7 +5,7 @@
    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
     <script src="/bootstrap/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8" ></script>
     <script src="/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-     <script src="/javascripts/index.js" type="text/javascript" charset="utf-8"></script>
+     <script src="/javascripts/superindex.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css" media="screen">
     html,body{
         height:100%;
@@ -78,6 +78,7 @@
             <li><a href="javascript:;">农副加工</a></li>
             <li><a href="javascript:;">苗木花草</a></li>
         </ul>
+        <div class="account"><a class="btn btn-primary" href="#" role="button">账户管理</a></div>
         <div class="arrow">
         <span> < </span>
         </div>
@@ -196,7 +197,7 @@
         function rerenderlist(index,key,type){
             $("#mainbody").empty();
             $.ajax({
-                url:"/relist",
+                url:"/superindex/relist",
                 data:{limit:8,offset:index*8,key:key,type:type},
                 success:(result)=>{
                  console.log(result) // 箭头函数解决this 指向
@@ -207,7 +208,7 @@
       }
       $(".prokinds").find("ul").find("li").on("click",function(){
                 var $text=$(this).text();
-                sameajax($text,"kindpage","kindtype","/relist")
+                sameajax($text,"kindpage","kindtype","/superindex/relist")
                 
       });
         
@@ -218,9 +219,9 @@
 
         $(".searchbtn").on("click",function(){
             if($(".selected").text()=="产品名称"){
-                sameajax($(".form-control").val(),"productname","proname","/relist")
+                sameajax($(".form-control").val(),"productname","proname","/superindex/relist")
             }else if($(".selected").text()=="日期"){
-                sameajax($(".form-control").val(),"productdate","date","/relist")
+                sameajax($(".form-control").val(),"productdate","date","/superindex/relist")
             }
         })
     </script>
