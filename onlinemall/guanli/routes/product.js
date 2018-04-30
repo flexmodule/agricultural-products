@@ -42,6 +42,7 @@ router.get("/fixed",function(req,res){
 
 
 router.post("/fixed",upload.single('picfile'),function(req,res){
+  console.log(req.body)
   Product.findByIdAndUpdate(req.body.id,{$set:{proname:req.body.proname,price:req.body.price,kindtype:req.body.kindtype,num:req.body.num,date:req.body.date,detail:req.body.detail,pathname:`/photo/${req.file.filename}`}}).then(result=>{
     res.redirect("/");
   })

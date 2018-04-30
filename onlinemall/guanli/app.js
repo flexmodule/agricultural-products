@@ -23,6 +23,8 @@ var mallBuy=require("./routes/mallbuy");
 var superIndex=require("./routes/superindex");
 var superLogin=require("./routes/superlogin");
 var superRegister=require("./routes/superregister");
+var superAccount=require("./routes/superaccount");
+var superProduct=require("./routes/superproduct");
 var session=require("express-session");
 var app = express();
 
@@ -68,6 +70,8 @@ app.use('/mallbuy',mallBuy);
 app.use('/superindex',superIndex);
 app.use('/superlogin',superLogin);
 app.use('/superregister',superRegister);
+app.use('/superaccount',superAccount);
+app.use('/superproduct',superProduct);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
